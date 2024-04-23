@@ -16,15 +16,24 @@ public class IngredientsRegister : IIngredientsRegister
 
     public Ingredient GetById(int id)
     {
-        foreach (var ingredient in All)
+        var AllIngredientsWithGivenId = All.Where(ingredient =>  ingredient.Id == id);
+
+        if (AllIngredientsWithGivenId.Count() > 1)
         {
-            if (ingredient.Id == id)
-            {
-                return ingredient;
-            }
+            throw new InvalidOperationException($"More than one ingredients have Id equal to {id}.");
         }
 
-        return null;
+        return AllIngredientsWithGivenId.FirstOrDefault();
+
+        //foreach (var ingredient in All)
+        //{
+        //    if (ingredient.Id == id)
+        //    {
+        //        return ingredient;
+        //    }
+        //}
+
+        //return null;
     }
 }
 
