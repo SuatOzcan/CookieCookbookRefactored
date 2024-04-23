@@ -33,6 +33,7 @@ public class RecipesConsoleUserInteraction : IRecipesUserInteraction
 
             var allRecipesAsStrings = allRecipes.Select((recipe, index) => $"******{index + 1}******\n{recipe}");
             Console.WriteLine(string.Join(Environment.NewLine,allRecipesAsStrings));
+            Console.WriteLine();
 
             //var counter = 1;
 
@@ -53,7 +54,7 @@ public class RecipesConsoleUserInteraction : IRecipesUserInteraction
         Console.WriteLine("Create a new cookie recipe! " +
             "Available ingredients are:");
         
-        Console.WriteLine(string.Join(Environment.NewLine, _ingredientsRegister.All.Select(ingredient => ingredient)));
+        Console.WriteLine(string.Join(Environment.NewLine, _ingredientsRegister.All));
 
         //foreach (var ingredient in _ingredientsRegister.All)
         //{
